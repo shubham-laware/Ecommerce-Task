@@ -1,0 +1,35 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+
+.profile-image{
+  width: 8rem !important;
+}
+ 
+.progress-bar {
+  background-color: rgb(253, 216, 222) !important;
+ 
+}
+ 
+.progress{
+  height: 5px !important;
+}
+ 
+.track-button{
+  background: rgb(202, 242, 124) !important;
+}
+ 
+.btn-paid{
+  background-color: rgb(253, 216, 222) !important;
+}
