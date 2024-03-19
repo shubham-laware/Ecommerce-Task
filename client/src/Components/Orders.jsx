@@ -12,6 +12,22 @@ const Orders = () => {
   const reviewRef = useRef(null);
 
 
+  const [orderStatus, setOrderStatus] = useState({orderID:'',status:'processing'});
+
+  const handleOrderStatus = async () => {
+    try {
+     
+      const response = await axios.post(
+        "http://localhost:8000/status/order-status",
+        orderStatus
+      );
+      if(response.status===200){
+        setOrderStatus({orderID:'',status:'processing'})
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  };
   
   useEffect(()=>{
     handleTrackOrder();
@@ -194,6 +210,15 @@ const displayCharacterCount = remainingCharacters > 0 ? remainingCharacters : 0;
         <div className="col-md-2"></div>
       </div>
 
+              <button
+                className="btn btn-sm text-black rounded-5 mx-1 p-2 border border-1 text-light"
+                data-bs-toggle="modal"
+                data-bs-target="#orderStatus-modal"
+              >
+                Order-Status
+              </button>
+          
+
               {/* review modal */}
 
       <div className="modal fade" tabIndex="-1" id="review-modal">
@@ -298,6 +323,66 @@ const displayCharacterCount = remainingCharacters > 0 ? remainingCharacters : 0;
                     </div>
                 </div>
             </div>
+        </div>
+
+
+
+        {/* update status-modal */}
+        <div className="modal fade" tabIndex="-1" id="orderStatus-modal">
+          <div className="modal-dialog">
+            <div className="modal-content">
+              <div className="modal-header">
+                <h1 className="ms-auto font-weight-bold">Order Status</h1>
+                <button
+                  type="button"
+                  className="btn-close"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <form className="modal-body">
+                <div className="p-3 d-flex flex-column gap-3">
+                <input
+                          type="Name"
+                          name="orderID"
+                          value={orderStatus.orderID}
+                          onChange={(e)=>setOrderStatus({...orderStatus,orderID:e.target.value})}
+                          className="form-control col-12 px-2 border border-2 rounded"
+                          id="exampleInputEmail1"
+                          aria-describedby="emailHelp"
+                          placeholder="Order ID"
+                        />
+                  <select
+                    className="form-control col-12 px-2 border border-2 rounded"
+                    id="orderStatusSelect"
+                    value={orderStatus.status}
+                    onChange={(e) => setOrderStatus({...orderStatus,status:e.target.value})}
+                  >
+                    <option value="processing">Processing</option>
+                    <option value="out-for-delivery">Out for Delivery</option>
+                    <option value="delivered">Delivered</option>
+                  </select>
+                </div>
+
+                <div className=" text-end px-3">
+                
+                <button
+                  type="button"
+                  className="btn btn-primary font-weight-bold"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                  onClick={handleOrderStatus}
+                >
+                  Update
+                </button>
+                </div>
+               
+              </form>
+              <div className="modal-footer">
+               
+              </div>
+            </div>
+          </div>
         </div>
     </div>
   );

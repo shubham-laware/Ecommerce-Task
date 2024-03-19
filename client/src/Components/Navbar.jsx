@@ -3,24 +3,24 @@ import { Link } from "react-router-dom";
 import axios  from "axios";
 
 function Navbar() {
-    const [orderStatus, setOrderStatus] = useState({orderID:'',status:'processing'});
+  //   const [orderStatus, setOrderStatus] = useState({orderID:'',status:'processing'});
 
-  const handleOrderStatus = async () => {
-    try {
+  // const handleOrderStatus = async () => {
+  //   try {
      
-      const response = await axios.post(
-        "http://localhost:8000/status/order-status",
-        orderStatus
-      );
-      if(response.status===200){
-        setOrderStatus({orderID:'',status:'processing'})
-      }
-    } catch (error) {
-      console.log(error)
-    }
-  };
+  //     const response = await axios.post(
+  //       "http://localhost:8000/status/order-status",
+  //       orderStatus
+  //     );
+  //     if(response.status===200){
+  //       setOrderStatus({orderID:'',status:'processing'})
+  //     }
+  //   } catch (error) {
+  //     console.log(error)
+  //   }
+  // };
   return (
-    <nav className="navbar navbar-expand-lg bg-body-secondary ">
+    <nav className="navbar navbar-expand-lg bg-body-secondary   ">
       <div className="container-fluid">
         <button
           className="navbar-toggler"
@@ -34,8 +34,8 @@ function Navbar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navbarSupportedContent">
-          <ul className="navbar-nav mx-auto mb-2 mb-lg-0 ">
-            <li className="nav-item active text-white">
+          <ul className="navbar-nav mx-auto mb-2 mb-lg-0 d-flex" style={{fontSize:'12px'}}>
+            <li className="nav-item active text-white ">
               <Link className="nav-link" to="/">
                 Profile setting
               </Link>
@@ -70,7 +70,7 @@ function Navbar() {
                 <span>Orders</span>
               </Link>
             </li>
-            <li className="nav-item active">
+            {/* <li className="nav-item active">
               <button
                 className="btn btn-sm text-black rounded-5 mx-1 p-2 border border-1 text-light"
                 data-bs-toggle="modal"
@@ -78,10 +78,30 @@ function Navbar() {
               >
                 Order-Status
               </button>
+            </li> */}
+            <li className="nav-item active ">
+              <Link className="nav-link" to="/blog1">
+                <span>Blog1</span>
+              </Link>
+            </li>
+            <li className="nav-item active ">
+              <Link className="nav-link" to="/blog2">
+                <span>Blog2</span>
+              </Link>
+            </li>
+            <li className="nav-item active ">
+              <Link className="nav-link" to="/connect">
+                <span>Connect</span>
+              </Link>
+            </li>
+            <li className="nav-item active ">
+              <Link className="nav-link" to="/help">
+                <span>Help</span>
+              </Link>
             </li>
           </ul>
         </div>
-        <div className="modal fade" tabIndex="-1" id="orderStatus-modal">
+        {/* <div className="modal fade" tabIndex="-1" id="orderStatus-modal">
           <div className="modal-dialog">
             <div className="modal-content">
               <div className="modal-header">
@@ -136,7 +156,7 @@ function Navbar() {
               </div>
             </div>
           </div>
-        </div>
+        </div> */}
       </div>
     </nav>
   );
