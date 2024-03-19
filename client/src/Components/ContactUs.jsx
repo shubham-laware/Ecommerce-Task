@@ -19,7 +19,7 @@ function ContactUs() {
                 <div className='border-top py-4'>
                     <h1 className='text-center text-md-start ' style={{fontSize:'24px'}}>Leading Brands trust us for our services</h1>
                     <div className='mt-4'>
-                        <img src="zendesk.png" alt="zendesk" className='w-200' />
+                        <img src="/zendesk.png" alt="zendesk" style={{width:'100px'}} />
                     </div>
                 </div>
             </div>
